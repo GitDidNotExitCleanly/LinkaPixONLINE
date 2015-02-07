@@ -259,11 +259,13 @@ function readFile(input) {
                         destroy_puzzle();
                         puzzle = string_to_puzzle(result.puzzledata);
                         build_puzzle(puzzle);
+                        register_game_events();
                         solution = string_to_puzzle(result.solutiondata);
                         // hide stuff we dont need anymore
                         $('.uploader').hide(400);
                         $('.new_puzzle').show(400);
                         $('.save_puzzle').show(400);
+                        $('.btn-load').hide(400);
                     }
                 })
             });
@@ -313,11 +315,8 @@ $(".btn-save").on('click', function() {
 			data: postdata,
 			success: function(result) {
 				console.log(result);
-				if (result == "OK") {
-					document.getElementById('userFile').submit();
-					console.log("saved");
-					alert("Saved ! Go to 'Private Puzzles' to check it !");
-				}
+				document.getElementById('userFile').submit();
+				alert("Saved ! Go to 'Private Puzzles' to check it !");
 			}
 		});
 	}
@@ -325,3 +324,5 @@ $(".btn-save").on('click', function() {
 		alert("Save failed! Name should be less than 13 characters!");
 	}
 });
+
+//register_game_events();

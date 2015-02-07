@@ -21,7 +21,7 @@ if(isset($_POST['puzzlename'])) {
 	$_SESSION['lastId'] = $lastId;
 	
 	unset($_POST['puzzlename']);
-	if ($rs) die("OK");
+	if ($rs) die($lastId);
 }
 
 ?>

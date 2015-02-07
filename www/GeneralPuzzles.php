@@ -272,7 +272,7 @@ Log In to Find More !<br />
 	</tr>
     <tr>
     	<td align="center">
-        	<a href="Scoreboard.php" class="buttonEffect"><img src="images/scoreboard.png" alt="scores" title="Socres" align="top" ></a>
+        	<a href="Upload.php" class="buttonEffect"><img src="images/upload.png" alt="Upload" title="Upload your favourite" align="top" ></a>
         </td>
         <td align="center">
         	<a href="#" onClick="topDiv();return false" class="buttonEffect"><img src="images/lock.png" alt="password" title="Change Password" align="top" ></a>    

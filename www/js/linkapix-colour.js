@@ -98,7 +98,42 @@ function refresh_game() {
     links = [];
     
     // check for end of game
-    if (!$(".static:not(.linked)")[0]) alert("success!");
+    if (!$(".static:not(.linked)")[0]) game_finished();
+}
+
+function game_finished() {
+    enddate = new Date();
+    diff = Math.abs(startdate - enddate);
+    elapsed = msToTime(diff);
+    alert("Well done! Puzzle completed in "+elapsed+"!");
+    //submit_score(diff);
+}
+
+function submit_score(ms) {
+    var postdata = new Object;
+    postdata.time = ms;
+    console.log(postdata);
+    $.ajax({
+        type: "POST",
+        url: '/submit_score.php',
+        data: postdata,
+        success: function(result) {
+            console.log(result);
+        }
+    })
+}
+
+function msToTime(duration) {
+    var milliseconds = parseInt((duration%1000)/100)
+        , seconds = parseInt((duration/1000)%60)
+        , minutes = parseInt((duration/(1000*60))%60)
+        , hours = parseInt((duration/(1000*60*60))%24);
+
+    hours = (hours < 10) ? "0" + hours : hours;
+    minutes = (minutes < 10) ? "0" + minutes : minutes;
+    seconds = (seconds < 10) ? "0" + seconds : seconds;
+
+    return minutes + ":" + seconds;
 }
 
 function check_valid_link(start, end) {
@@ -114,7 +149,7 @@ function register_game_events() {
     // register all needed mousedown/mouseover/mouseup events
     // if the click is valid, then we emit events to the linkapix object with
     // the expected behavior eg: editlink event or startlink event
-    $(".linkapix td").mousedown(function() {
+    $(".linkapix td").on('mousedown', function() {
         if ($(this).hasClass('link-end')) {
             // if a partial link then undo it
             $(".linkapix").trigger('editlink', [$(this)]);
@@ -134,14 +169,14 @@ function register_game_events() {
         }
     });
 
-    $(".linkapix td").mouseover(function() {
+    $(".linkapix td").on('mouseover', function() {
         if (picking) {
             // ignore mouseovers unless in picking state
             $(".linkapix").trigger('extendlink', [$(this)]);
         }
     });
 
-    $(".linkapix td").mouseup(function() {
+    $(".linkapix td").on('mouseup', function() {
         if (picking) {
             // ignore mouseups unless in picking state
             $('.linkapix').trigger('stoplink', [$(this)]);
@@ -325,7 +360,7 @@ $(".clear_incorrect").on('click', function (event) {
             }
         };
     });
-    refresh_game();
+    //refresh_game();
 });
 
 $(".show_solution").on('click', function (event) {

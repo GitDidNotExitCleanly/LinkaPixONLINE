@@ -84,9 +84,6 @@ session_start();
     <td align="center">
     <a class="buttonEffect show_solution"><img src="images/solution.png" width="32" height="32" alt="Show Solution" title="Show Solution"></a>
     </td>
-    <td align="center">
-    <a href="<?php if ($hasPuzzle==1) echo "Score_rank.php?puzzleId={$_GET['puzzleId']}" ?>" class="buttonEffect"><img src="images/highscore.png" width="32" height="32" alt="High Scores" title="View High Scores"></a>
-    </td>
   </tr>
 		</table>
         </div>
@@ -95,12 +92,16 @@ session_start();
   <tr>
 <!-- Functional Buttons -->
     <td align="center">
+<!-- not relevant on this page
     <div class="functionButtons">
-    	<div class="btn-load load_puzzle" style="width:160px; height:45px;">
-    		<img src="images/load-disabled.jpg" alt="load" title="Go to 'Play A Pix' to upload your favourite" />
-        </div>
-       		<img src="images/save-disabled.jpg" alt="save" title="Go to 'Play A Pix' to save your favourite" style="float:left;margin-left:160px;" />
+    	<a class="btn-load buttonEffect load_puzzle" style="width:160px; height:45px;">
+    		<img src="images/load-btn.jpg" alt="load" title="Load saved progress" />
+        </a>
+    	<a class="btn-save buttonEffect save_puzzle" style="">
+       		<img src="images/save-btn.jpg" alt="save" title="Save current progress" style="float:left;" />
+        </a>
     </div>
+-->
     </td>
   </tr>
 </table>
@@ -130,6 +131,10 @@ session_start();
     build_puzzle(puzzle);
     var solution = string_to_puzzle('<?=$solutiondata?>');
     register_game_events();
+    var startdate = null;
+    $(function() {
+        startdate = new Date();
+    });
   </script>
 
 </body>

@@ -50,9 +50,9 @@ session_start();
         <div id="sizetoolbar">
             <p>		
     		<label for="width">Width:</label> 
-            <input type="number" name="width" id="width" value="5">
+            <input type="number" name="width" id="width" value="15">
     		<label for="height" style="margin-left:30px">Height:</label> 
-            <input type="number" name="height" id="height" value="5">
+            <input type="number" name="height" id="height" value="15">
             <br />
             <label for="difficulty">Difficulty:</label>
             <select name="difficulty" id="difficulty">
@@ -75,7 +75,7 @@ session_start();
         <table id="gameButtons" width="301" border="0" cellspacing="20" cellpadding="0" align="center">
   <tr>
     <td align="center">
-    <a class="buttonEffect"><img src="images/restart.png" width="32" height="32" alt="Restart" title="Restart"></a>
+    <a href="/Upload.php" class="buttonEffect"><img src="images/restart.png" width="32" height="32" alt="Restart" title="Restart"></a>
     </td>
     <td align="center">
     <a class="show_upload_solution buttonEffect"><img src="images/solution.png" width="32" height="32" alt="Show Solution" title="Show Solution"></a>
@@ -84,12 +84,12 @@ session_start();
 <?php 
 	if (isset($_SESSION['username'])) {
 ?>
-    <a href="PrivatePuzzles.php" class="buttonEffect"><img src="images/highscore.png" width="32" height="32" alt="My Own Puzzles" title="View 'My Own Puzzles'"></a>
+    <a href="PrivatePuzzles.php" class="buttonEffect"><img src="images/privatePuzzles.png" width="32" height="32" alt="My Own Puzzles" title="View 'My Own Puzzles'"></a>
 <?php 
 	}
 	else {
 ?>
-	<img src="images/highscore-disabled.png" width="32" height="32" alt="My Own Puzzles" title="Log in to view private puzzles">
+	<img src="images/privatePuzzles-disabled.png" width="32" height="32" alt="My Own Puzzles" title="Log in to view private puzzles">
 <?php 
 	}
 ?>
@@ -146,6 +146,9 @@ else {
 <script src="js/jquery.js"></script>
 <script src="js/linkapix-colour.js"></script>
 <script src="js/upload.js"></script>
+
+<script>
+</script>
 
 <iframe name="uploadImg" src="" style="display:none"></iframe>
 </body>
