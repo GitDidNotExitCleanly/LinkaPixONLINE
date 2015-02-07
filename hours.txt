@@ -1,0 +1,3 @@
+www-data 19237  0.0  0.0  17644  1232 ?        S    12:20   0:00 sh -c cd /home/thomas/gp13-jaa/final/; /usr/bin/python solver.py 50 50 50x50x10-09dd82aaf373075c4a0d62ed2f10fc94.json 10
+www-data 19238 99.8  3.0 100060 62460 ?        R    12:20  52:46 /usr/bin/python solver.py 50 50 50x50x10-09dd82aaf373075c4a0d62ed2f10fc94.json 10
+thomas   21990  0.0  0.0  10376   876 pts/47   S+   13:12   0:00 grep solv
